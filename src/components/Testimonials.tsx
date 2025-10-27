@@ -1,8 +1,6 @@
 import React, { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCards } from "swiper/modules";
-import 'swiper/css';
-import 'swiper/css/effect-cards';
 
 const Testimonials: React.FC = () => {
   const [playingIndex, setPlayingIndex] = useState<number | null>(null);
@@ -177,3 +175,4 @@ const Testimonials: React.FC = () => {
 };
 
 export default Testimonials;
+

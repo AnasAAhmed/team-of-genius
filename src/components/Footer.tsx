@@ -1,4 +1,3 @@
-import React from "react";
 
 const Footer = () => {
   const faqsColumn1 = [
@@ -156,3 +155,4 @@ const Footer = () => {
 };
 
 export default Footer;
+

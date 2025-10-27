@@ -1,4 +1,3 @@
-import React from "react";
 
 const plans = [
     {
@@ -276,3 +275,4 @@ const PricingSection = () => {
 };
 
 export default PricingSection;
+

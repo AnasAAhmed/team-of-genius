@@ -1,8 +1,8 @@
-import React, { useRef, useState } from "react";
+import  { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCards } from "swiper/modules";
 
-const Testimonials: React.FC = () => {
+const Testimonials= () => {
   const [playingIndex, setPlayingIndex] = useState<number | null>(null);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
@@ -175,4 +175,5 @@ const Testimonials: React.FC = () => {
 };
 
 export default Testimonials;
+
 

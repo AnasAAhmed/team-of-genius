@@ -1,5 +1,4 @@
 import { ChevronRight } from "lucide-react";
-import React from "react";
 
 const WhyPostMoreSection = () => {
     return (
@@ -196,4 +195,5 @@ const WhyPostMoreSection = () => {
         </section>
     )
 }
+
 export default WhyPostMoreSection;

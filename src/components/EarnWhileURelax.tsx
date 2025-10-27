@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 const EarnWhileYouRelax = () => {
   const [followers, setFollowers] = useState(10000);
@@ -146,3 +146,4 @@ const EarnWhileYouRelax = () => {
 };
 
 export default EarnWhileYouRelax;
+

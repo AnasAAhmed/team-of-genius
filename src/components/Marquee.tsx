@@ -77,7 +77,7 @@ const Marquee = () => {
 
             {/* Social Profiles Marquee */}
             <div className="overflow-hidden py-6 relative">
-                <Mdarquee duration={20}>
+                <Mdarquee duration={10}>
                     <div className="flex gap-8 md:gap-14">
                         {socialProfiles.map((profile, idx) => (
                             <div
@@ -106,7 +106,7 @@ const Marquee = () => {
 
             {/* Brand Logos Marquee */}
             <div className="overflow-hidden py-12 pb-6">
-                <Mdarquee reverse duration={35}>
+                <Mdarquee reverse duration={25}>
                     <div className="flex gap-10">
                         {brandLogos.map((logo, idx) => (
                             <div key={idx} className="w-20 md:w-[120px] slider-item flex items-center justify-center">

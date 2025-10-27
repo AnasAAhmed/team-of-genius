@@ -7,9 +7,9 @@ const Hero = () => {
         <section >
             <img fetchPriority="high" src="/assets/images/banner-texture.webp" alt="main_bg1" className="w-fit h-screen -z-10 absolute object-cover top-0 left-0" loading="eager"></img>
             <Gradient />
-            <section className="flex max-md:flex-col  max-md:justify-center justify-between items-start gap-8 max-w-7xl pt-8 sm:pt-16 w-full mx-auto  ">
-                <div className="w-full  md:w-6/12 pt-12 pl-4" style={{ opacity: '1', transform: 'none' }}>
-                    <div className="hero-content space-y-4.5">
+            <section className="flex max-md:flex-col  max-md:justify-center justify-between items-start gap-8 max-w-7xl pt-4 sm:pt-16 w-full mx-auto  ">
+                <div className="w-full  md:w-6/12 pt-12 md:pl-4" style={{ opacity: '1', transform: 'none' }}>
+                    <div className="hero-content max-md:text-center space-y-4.5">
                         <h1 className="text-4xl font-bold leading-10">Gain Millions of followers on your social media accounts with the
                             <span className="text-[#EAB101]"> #1 AI Agent </span>
                             powered&nbsp;by&nbsp;Team of Genius
@@ -23,7 +23,7 @@ const Hero = () => {
                     </div>
                 </div>
                 <div className="w-full flex-1 md:ws-6/12" style={{ opacity: '1', transform: 'none' }}>
-                    <div className="relative w-full ml-16">
+                    <div className="relative w-full max-w-sm md:max-w-lg  md:ml-16">
                         {
                             play ? (
                                 <video
@@ -35,7 +35,7 @@ const Hero = () => {
                                 />
                             ) : (
                                 <div
-                                    className="relative z-10 w-full max-w-lg h-full cursor-pointer flex items-center justify-center"
+                                    className="relative z-10 w-full max-w-sm md:max-w-lg h-full cursor-pointer flex items-center justify-center"
                                     onClick={() => setPlay(true)}
                                 >
                                     <img
@@ -58,8 +58,6 @@ const Hero = () => {
                                 </div>
                             )
                         }
-                        <button className="play-button-home"><svg width="116" height="128" viewBox="0 0 116 128" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M58.2097 128C89.9819 128 115.738 99.3462 115.738 64C115.738 28.6538 89.9819 0 58.2097 0C26.4376 0 0.681152 28.6538 0.681152 64C0.681152 99.3462 26.4376 128 58.2097 128ZM49.2209 87.4754L81.5807 67.3536C83.9777 65.8631 83.9777 62.1369 81.5807 60.6464L49.2209 40.5246C46.8239 39.0341 43.8276 40.8972 43.8276 43.8782V84.1218C43.8276 87.1028 46.8238 88.9659 49.2209 87.4754Z" fill="black" fill-opacity="0.56"></path></svg>
-                        </button>
                     </div>
                 </div>
                 <div className="btntexther" style={{ opacity: '1', transform: 'none' }}>

@@ -131,14 +131,5 @@
   body {
     @apply bg-background text-foreground;
   }
-  body::before {
-  content: '';
-  position: fixed;
-  inset: 0; /* cover entire viewport */
-  background-image: url('https://teamofgenius.com/assets/elipse-bg-DAhVx76O.webp');
-  background-size: cover;
-  background-position: center;
-  filter: blur(8px); /* adjust blur here */
-  z-index: -1; /* behind everything */
-}
+  
 }

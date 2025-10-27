@@ -1,29 +1,62 @@
+import { Instagram, Send } from "lucide-react";
 
 const Footer = () => {
+
   const faqsColumn1 = [
-    "How does TOG’s AI work?",
-    "Is it guaranteed that I will gain followers?",
-    "When will I start seeing growth?",
-    "What is TOG?",
-    "How much money will I make using TOG?",
-  ];
+    {
+      que: "How does TOG’s AI work?",
+      answer: "Do I need to link my existing social media accounts, or can I create new ones?Do I need to link my existing social media accounts, or can I create new ones?"
+    },
+    {
+      que: "Is it guaranteed that I will gain followers?",
+      answer: "Do I need to link my existing social media accounts, or can I create new ones?Do I need to link my existing social media accounts, or can I create new ones?"
+    },
+    {
+      que: "When will I start seeing growth?",
+      answer: "Do I need to link my existing social media accounts, or can I create new ones?Do I need to link my existing social media accounts, or can I create new ones?"
+    },
+    {
+      que: "What is TOG?",
+      answer: "Do I need to link my existing social media accounts, or can I create new ones?Do I need to link my existing social media accounts, or can I create new ones?"
+    },
+    {
+      que: "How much money will I make using TOG?",
+      answer: "Do I need to link my existing social media accounts, or can I create new ones?Do I need to link my existing social media accounts, or can I create new ones?"
+    }
+  ]
 
   const faqsColumn2 = [
-    "Are there limited seats or licenses available?",
-    "Do I need to link my existing social media accounts, or can I create new ones?",
-    "Is TOG available worldwide?",
-    "Do I need any special skills or devices to use TOG?",
-    "When can I start using TOG after making a purchase?",
-  ];
+    {
+      que: "Are there limited seats or licenses available?",
+      answer: "Do I need to link my existing social media accounts, or can I create new ones?Do I need to link my existing social media accounts, or can I create new ones?"
+    },
+    {
+      que: "Do I need to link my existing social media accounts, or can I create new ones?",
+      answer: "Do I need to link my existing social media accounts, or can I create new ones?Do I need to link my existing social media accounts, or can I create new ones?"
+    },
+    {
+      que: "Is TOG available worldwide?",
+      answer: "Do I need to link my existing social media accounts, or can I create new ones?Do I need to link my existing social media accounts, or can I create new ones?"
+    },
+    {
+      que: "Do I need any special skills or devices to use TOG?",
+      answer: "Do I need to link my existing social media accounts, or can I create new ones?Do I need to link my existing social media accounts, or can I create new ones?"
+    },
+    {
+      que: "When can I start using TOG after making a purchase?",
+      answer: "Do I need to link my existing social media accounts, or can I create new ones?Do I need to link my existing social media accounts, or can I create new ones?"
+    }
+  ]
+
 
   return (
     <section className="footersection container">
       {/* Desktop Footer */}
-      <footer className="bg-transparent text-white font-poppins sm:px-5 sm:py-10 md:px-5 md:py-10 lg:px-5 lg:py-10 xl:px-5 xl:py-10 text-sm sm:text-sm md:text-base lg:text-base xl:text-base px-[10px] py-[30px] max-[480px]:hidden">
+      <footer className="bg-transparent text-white font-poppins sm:px-5 sm:py-10 md:px-5 md:py-10 lg:px-5 lg:py-10 xl:px-5 xl:py-10 text-sm sm:text-sm md:text-base lg:text-base xl:text-base px-[10px] py-[30px]">
         {/* Logo & CTA */}
-        <div className="flex justify-between w-full mx-auto items-center lg:text-center md:gap-3">
+        <div className="flex max-sm:hidden justify-between w-full mx-auto items-center lg:text-center md:gap-3">
           <div className="flex text-left lg:mb-5 sm:mb-0 sm:mt-7 cursor-pointer">
-            <img loading="lazy" src="/assets/images/logo.webp" alt="TOG Logo" />
+            <img loading="lazy" src="/assets/icons/logo.webp" alt="TOG Logo" />
             <span className="flex items-center pl-[10px] ml-0 sm:ml-0 max-[480px]:ml-[10px] mt-[10px] text-[9px] leading-[12px]">
               #1 Social Media <br /> AI Agent
             </span>
@@ -47,7 +80,7 @@ const Footer = () => {
                     key={index}
                     className="flex justify-between items-start gap-2 text-sm text-gray-300 mb-2 cursor-pointer hover:text-white text-[0.9em]"
                   >
-                    <p className="flex-1">{faq}</p>
+                    <p className="flex-1">{faq.que}</p>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="24"
@@ -79,9 +112,10 @@ const Footer = () => {
                 {faqsColumn2.map((faq, index) => (
                   <li
                     key={index}
-                    className="flex items-center justify-between gap-2 text-sm text-gray-300 mb-2 cursor-pointer hover:text-white text-[0.9em]"
+                    className="flex relative group items-center justify-between gap-2 text-sm text-gray-300 mb-2 cursor-pointer hover:text-white text-[0.9em]"
                   >
-                    <p className="flex-1">{faq}</p>
+                    <p className="absolute left-36 top-0 z-30 font-medium text-[16px] p-2 bg-blue-200 hidden text-black rounded-[10px] group-hover:block">{faq.answer}</p>
+                    <p className="flex-1">{faq.que}</p>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="24"
@@ -120,14 +154,14 @@ const Footer = () => {
             </div>
 
             {/* Contact Column */}
-            <div className="text-left float-right inline-block lg:text-center">
+            <div className="text-center md:text-left float-right inline-block lg:text-center">
               <p className="text-base mb-2.5">We are just one message away</p>
               <div className="flex gap-2.5 max-[480px]:justify-center w-full justify-center">
-                <a href="https://www.instagram.com/teamofgeniusdotcom" target="_blank" rel="noopener noreferrer">
-                  <img className="w-[30px] h-[30px] cursor-pointer object-none max-[480px]:w-[25px] max-[480px]:h-[25px] max-[480px]:object-contain" loading="lazy" src="/assets/images/instagram-white.webp" alt="Instagram" />
+                <a title="Instagram" href="https://www.instagram.com/teamofgeniusdotcom" target="_blank" rel="noopener noreferrer">
+                  <Instagram className="w-[30px] h-[30px] cursor-pointer object-none max-[480px]:w-[25px] max-[480px]:h-[25px] max-[480px]:object-contain" />
                 </a>
-                <a href="https://t.me/teamofgenius" target="_blank" rel="noopener noreferrer">
-                  <img className="w-[30px] h-[30px] cursor-pointer object-none max-[480px]:w-[25px] max-[480px]:h-[25px] max-[480px]:object-contain" loading="lazy" src="/assets/images/footer-icon2.webp" alt="Telegram" />
+                <a href="https://t.me/teamofgenius" title="Telegram" target="_blank" rel="noopener noreferrer">
+                  <Send className="w-[30px] h-[30px] cursor-pointer object-none max-[480px]:w-[25px] max-[480px]:h-[25px] max-[480px]:object-contain" />
                 </a>
               </div>
               <div className="mt-3 text-center">

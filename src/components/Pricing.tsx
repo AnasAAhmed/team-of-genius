@@ -1,3 +1,7 @@
+import { ChevronRight } from "lucide-react";
+import { useRef } from "react";
+import { Navigation } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 const plans = [
     {
@@ -97,6 +101,8 @@ const plans = [
 
 
 const PricingSection = () => {
+    const prevRef = useRef<HTMLDivElement | null>(null);
+    const nextRef = useRef<HTMLDivElement | null>(null);
     return (
         <section className="relative text-white font-poppins">
             {/* Background SVG */}
@@ -154,105 +160,140 @@ const PricingSection = () => {
                 </div>
 
                 {/* Heading */}
-                <h2 className="text-4xl font-extrabold mb-2 max-[480px]:text-2xl">
+                <h2 className="text-3xl sm:text-5xl font-extrabold mb-2 ">
                     OUR PRICING <span className="text-[#f9a825]">PLANS</span>
                 </h2>
-                <p className="text-lg font-bold mb-8 max-[480px]:text-sm">
+                <p className="text-lg sm:text-xl font-bold mb-12">
                     Pick a plan that suits your needs.
                 </p>
 
                 {/* Plans */}
-                <div className="flex flex-wrap justify-center gap-5">
-                    {plans.map((plan, idx) => (
-                        <div
-                            key={idx}
-                            className="grow bg-linear-to-r from-white/20 to-gray backdrop-blur-[21px] rounded-2xl shadow-lg p-5 flex flex-col max-w-[400px] text-left relative"
-                        >
-                            {plan.top_notch && (
-                                <p className="absolute -top-5 left-1/2 -translate-x-1/2 bg-[#f9a825] text-white font-bold py-2 px-5 rounded-[8px]">
-                                    {plan.top_notch}
-                                </p>
-                            )}
+                <div className="flex grow flex-wrap justify-center gap-10 md:gap-5">
+                    <Swiper
+                        modules={[Navigation]}
+                        spaceBetween={20}
+                        slidesPerView={1}
+                        onBeforeInit={(swiper) => {
+                            // @ts-ignore
+                            swiper.params.navigation.prevEl = prevRef.current;
+                            // @ts-ignore
+                            swiper.params.navigation.nextEl = nextRef.current;
+                        }}
+                        navigation={{
+                            prevEl: prevRef.current,
+                            nextEl: nextRef.current,
+                        }}
+                        breakpoints={{
+                            640: { slidesPerView: 1 },
+                            768: { slidesPerView: 2 },
+                            1024: { slidesPerView: 3 },
+                        }}
+                        className="!py-10"
+                    >
+                        {plans.map((plan, idx) => (
+                            <SwiperSlide key={idx}>
+                                <div
+                                    key={idx}
+                                    className="grow bg-linear-to-r from-white/30 to-white/5 backdrop-blur-[21px] rounded-2xl shadow-lg p-5 flex flex-col max-w-[400px] text-left relative"
+                                >
+                                    {plan.top_notch && (
+                                        <p className="absolute -top-5 left-1/2 -translate-x-1/2 bg-[#f9a825] text-white font-bold py-2 px-2 sm:px-5 rounded-[8px]">
+                                            {plan.top_notch}
+                                        </p>
+                                    )}
 
-                            {/* Icon + Title */}
-                            <div className="flex justify-center items-center gap-2 my-2">
-                                <img src="/assets/icons/diamond.svg" className="w-6 h-6 md:w-12 md:h-12" alt="diamond" />
-                                <h3 className="text-3xl font-bold">{plan.plan_name}</h3>
-                            </div>
+                                    {/* Icon + Title */}
+                                    <div className="flex justify-center items-center gap-2 my-2">
+                                        <img src="/assets/icons/diamond.svg" className="w-6 h-6 md:w-12 md:h-12" alt="diamond" />
+                                        <h3 className="text-3xl font-bold">{plan.plan_name}</h3>
+                                    </div>
 
-                            {/* Price */}
-                            <p className="text-lg self-center font-bold mb-3">
-                                {plan.plan_price}/{plan.plan_duration}
-                            </p>
+                                    {/* Price */}
+                                    <p className="text-lg self-center font-bold mb-3">
+                                        ${plan.plan_price}/{plan.plan_duration}
+                                    </p>
 
-                            {/* Platforms */}
-                            {plan.plan_platforms.length > 0 && (
-                                <div className="flex gap-2 items-center mb-2">
-                                    <img src="/assets/icons/check.png" className="size-6" alt="check" />
+                                    {/* Platforms */}
+                                    {plan.plan_platforms.length > 0 && (
+                                        <div className="flex gap-2 items-center mb-2">
+                                            <img src="/assets/icons/check.png" className="size-6" alt="check" />
 
-                                    <span className="font-bold">Platforms:</span>
-                                    {plan.plan_platforms.map((platform) => (
-                                        <img
-                                            key={platform}
-                                            src={`https://teamofgenius.com/assets/images/${platform}-icon.webp`}
-                                            alt={platform}
-                                            className="w-5 h-5 rounded-full object-contain"
-                                        />
-                                    ))}
-                                </div>
-                            )}
-
-                            {/* Features */}
-                            <ul className="mb-2 text-sm">
-                                {plan.plan_description.map((feature, i) => (
-                                    <li key={i} className="mb-1 border-b py-1 font-medium text-[16px] border-white/40 gap-2 flex items-center">
-                                        <img src="/assets/icons/check.png" className="size-6" alt="check" /> <div
-                                            // className="text-gray-800 text-base"
-                                            dangerouslySetInnerHTML={{ __html: feature }}
-                                        />
-                                    </li>
-                                ))}
-                            </ul>
-
-                            {/* Bonuses */}
-                            {plan.plan_bonuses.length > 0 && (
-                                <div>
-                                    <h4 className="text-lg font-semibold mb-1">Bonuses:</h4>
-                                    <ul className="text-sm">
-                                        {plan.plan_bonuses.map((bonus, i) => (
-                                            <li key={i} className="flex gap-2 items-center">
+                                            <span className="font-bold">Platforms:</span>
+                                            {plan.plan_platforms.map((platform) => (
                                                 <img
-                                                    src={bonus.image}
-                                                    alt="bonus"
-                                                    className="w-5 h-5 object-contain"
+                                                    key={platform}
+                                                    src={`https://teamofgenius.com/assets/images/${platform}-icon.webp`}
+                                                    alt={platform}
+                                                    className="w-5 h-5 rounded-full object-contain"
                                                 />
-                                                <span>{bonus.text}</span>
+                                            ))}
+                                        </div>
+                                    )}
+
+                                    {/* Features */}
+                                    <ul className="mb-2 text-sm">
+                                        {plan.plan_description.map((feature, i) => (
+                                            <li key={i} className="mb-1 border-b py-1 font-medium text-[16px] border-white/40 gap-2 flex items-center">
+                                                <img src="/assets/icons/check.png" className="size-6" alt="check" /> <div
+                                                    // className="text-gray-800 text-base"
+                                                    dangerouslySetInnerHTML={{ __html: feature }}
+                                                />
                                             </li>
                                         ))}
                                     </ul>
+
+                                    {/* Bonuses */}
+                                    {plan.plan_bonuses.length > 0 && (
+                                        <div>
+                                            <h4 className="text-lg font-semibold mb-1">Bonuses:</h4>
+                                            <ul className="text-sm">
+                                                {plan.plan_bonuses.map((bonus, i) => (
+                                                    <li key={i} className="flex border-b py-1 border-white/40 gap-2 items-center">
+                                                        <img
+                                                            src={bonus.image}
+                                                            alt="bonus"
+                                                            className="w-5 h-5 object-contain"
+                                                        />
+                                                        <span className="font-normal text-[15px]">{bonus.text}</span>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                    )}
+
+                                    {/* Image */}
+                                    {plan.plan_package && (
+                                        <img
+                                            src={plan.plan_package}
+                                            alt={`${plan.plan_name} Benefits`}
+                                            className="w-full h-48 object-contain mt-4"
+                                        />
+                                    )}
+
+                                    {/* Free text */}
+                                    {plan.plan_free && (
+                                        <div className="text-center font-bold mt-2">{plan.plan_free}</div>
+                                    )}
+
+                                    {/* Button */}
+                                    <button className="mt-4 w-full text-lg  hover:bg-[#f9a825] border-white border cursor-pointer py-3 rounded-[30px] font-bold">
+                                        {plan.button_text}
+                                    </button>
                                 </div>
-                            )}
-
-                            {/* Image */}
-                            {plan.plan_package && (
-                                <img
-                                    src={plan.plan_package}
-                                    alt={`${plan.plan_name} Benefits`}
-                                    className="w-full h-48 object-contain mt-4"
-                                />
-                            )}
-
-                            {/* Free text */}
-                            {plan.plan_free && (
-                                <div className="text-center font-bold mt-2">{plan.plan_free}</div>
-                            )}
-
-                            {/* Button */}
-                            <button className="mt-4 w-full text-lg  hover:bg-[#f9a825] border-white border cursor-pointer py-3 rounded-[30px] font-bold">
-                                {plan.button_text}
-                            </button>
-                        </div>
-                    ))}
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>
+                </div>
+                <div className="flex justify-center gap-4 mt-0 md:mt-0 absolute right-[25%] md:right-[50%] translate-x-[-50%] bottom-8 md:bottom-[12rem]">
+                    <div ref={prevRef} className="cursor-pointer text-black size-8 bg-[#eab101] rounded-full flex justify-center items-center pricing-prev">
+                        <svg className="icon icon-tabler icons-tabler-outline icon-tabler-chevron-left" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M15 6l-6 6l6 6" />
+                        </svg>
+                    </div>
+                    <div ref={nextRef} className="cursor-pointer text-black size-8 bg-[#eab101] rounded-full flex justify-center items-center pricing-next">
+                        <ChevronRight />
+                    </div>
                 </div>
             </div>
 

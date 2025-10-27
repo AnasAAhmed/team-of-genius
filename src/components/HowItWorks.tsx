@@ -31,27 +31,30 @@ const HowItWorks = () => {
     },
   ];
 
-  // 🔹 Scroll detection logic
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const index = sectionRefs.current.findIndex((ref) => ref === entry.target);
-            if (index !== -1) setActiveStep(index + 1);
-          }
-        });
-      },
-      { threshold: 0.5 }
-    );
+ useEffect(() => {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      // Find the entry most in-view (largest intersection ratio)
+      const visibleEntry = entries.reduce((max, entry) =>
+        entry.intersectionRatio > max.intersectionRatio ? entry : max
+      );
 
-    sectionRefs.current.forEach((ref) => {
-      if (ref) observer.observe(ref);
-    });
+      if (visibleEntry && visibleEntry.isIntersecting) {
+        const index = sectionRefs.current.indexOf(visibleEntry.target as HTMLDivElement);
+        if (index !== -1) {
+          setActiveStep(index + 1);
+        }
+      }
+    },
+    {
+      threshold: [0.15, 0.5, 0.75], // triggers smoothly when step is centered
+      rootMargin: "0px 0px -20% 0px", // reduces "early activation"
+    }
+  );
 
-    return () => observer.disconnect();
-  }, []);
-
+  sectionRefs.current.forEach((ref) => ref && observer.observe(ref));
+  return () => observer.disconnect();
+}, []);
 
   const handleStepClick = (id: number) => {
     setActiveStep(id);
@@ -70,7 +73,9 @@ const HowItWorks = () => {
       </h1>
 
       {/* Sticky Navigation */}
-      <div className="sticky top-4 z-20 backdrop-blur-md rounded-xl">
+      <div
+       style={{ position: activeStep > 3 ?  undefined: "sticky" }} 
+      className="stispocky top-4 z-20 backdrop-blur-md rounded-xl">
         <h1 className="font-extrabold text-center pt-6 pb-6 mx-auto text-[clamp(1.375rem,0.7475rem+2.5743vw,3rem)]">
           How It Works?
         </h1>
@@ -103,7 +108,7 @@ const HowItWorks = () => {
               }
             }}
             id={`step-${step.id}`}
-            className="sticky top-68 border-2 border-[#42644452] shadow-black bg-cover! backdrop-blur-md rounded-2xl flex justify-center overflow-hidden transition-all duration-500"
+            className={`${i < steps.length - 1 ? "sticky top-68" : ""}  border-2 border-[#42644452] shadow-black bg-cover! backdrop-blur-md rounded-2xl flex justify-center overflow-hidden transition-all duration-500`}
             style={{
               background:
                 "linear-gradient(269deg, rgb(39, 39, 39), rgb(65, 65, 65))",
@@ -111,7 +116,7 @@ const HowItWorks = () => {
                 "rgba(255, 255, 255, 0.02) -5px -5px 250px 0px inset",
             }}
           >
-            <div className="flex md:flex-nowrap flex-wrap h-efull items-center justify-center relative w-full max-h-[400px] h-[40vh] md:h-[60vh]">
+            <div className={`flex md:flex-nowrap flex-wrap h-full items-center justify-center relative w-full max-h-[400px] h-[40vh] md:h-[60vh]`}>
               <div className="w-full md:w-6/12 px-4 md:px-8 py-5 md:py-2 flex items-center">
                 <p className="font-bold text-[#D3D3D3] text-[clamp(0.75rem,0.3156rem+1.7822vw,1.875rem)]">
                   {step.text}

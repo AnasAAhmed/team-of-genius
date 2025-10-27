@@ -12,6 +12,10 @@ export default defineConfig({
       },
     }),
   ],
+  server: {
+    host: true, // bind to all network interfaces
+    port: 5173, // optional, default is 5173
+  },
    resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),

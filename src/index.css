@@ -8,7 +8,7 @@
 
 @custom-variant dark (&:is(.dark *));
 
-.dark {
+.light {
   font-family: 'Poppins',system-ui, Avenir, Helvetica, Arial, sans-serif;
 
   line-height: 1.5;
@@ -141,9 +141,8 @@
 
 }
 
-body {
+body main{
   background:url('/assets/images/lol.webp') center top / cover repeat fixed, url('/assets/images/elipse.webp') center top / cover repeat fixed;
-  /* background-color: #000;  */
 }
 
 @keyframes marquee {

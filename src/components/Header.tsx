@@ -6,10 +6,10 @@ const Header = () => {
 
     return (
         <header className=" flex justify-between items-center px-6 py-[30px]">
-            <div className="flex gap-2 justify-center items-center cursor-pointer">
+            <Link to={'/'} className="flex gap-2 justify-center items-center cursor-pointer">
                 <img className="h-[50px]" loading="lazy" src="/assets/icons/logo.webp" alt="tog" />
                 <span className="tagline text-center text-[10px] font-normal">#1 Social Media <br />AI Agent</span>
-            </div>
+            </Link>
             <nav className="flex relative justify-center items-center">
                 <Link className="font-medium max-sm:hidden text-lg mx-2" to="/#pricing">Pricing</Link>
                 <Link className="font-medium max-sm:hidden text-lg mx-2" to="/auth/login">Login</Link>

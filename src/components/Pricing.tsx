@@ -1,8 +1,6 @@
 import { ChevronRight } from "lucide-react";
-import { useRef } from "react";
 import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-
 const plans = [
     {
         "id": 2,
@@ -101,10 +99,9 @@ const plans = [
 
 
 const PricingSection = () => {
-    const prevRef = useRef<HTMLDivElement | null>(null);
-    const nextRef = useRef<HTMLDivElement | null>(null);
+
     return (
-        <section className="relative text-white font-poppins">
+        <section id="pricing" className="relative text-white font-poppins">
             {/* Background SVG */}
             <div className="absolute w-full md:hidden">
                 <svg
@@ -171,30 +168,24 @@ const PricingSection = () => {
                 <div className="flex grow flex-wrap justify-center gap-10 md:gap-5">
                     <Swiper
                         modules={[Navigation]}
-                        spaceBetween={20}
+                        spaceBetween={0}
                         slidesPerView={1}
-                        onBeforeInit={(swiper) => {
-                            // @ts-ignore
-                            swiper.params.navigation.prevEl = prevRef.current;
-                            // @ts-ignore
-                            swiper.params.navigation.nextEl = nextRef.current;
-                        }}
                         navigation={{
-                            prevEl: prevRef.current,
-                            nextEl: nextRef.current,
+                            nextEl: '#my-swiper-button-next',
+                            prevEl: '#my-swiper-button-prev',
                         }}
                         breakpoints={{
                             640: { slidesPerView: 1 },
                             768: { slidesPerView: 2 },
                             1024: { slidesPerView: 3 },
                         }}
-                        className="!py-10"
+                        className="py-10!"
                     >
                         {plans.map((plan, idx) => (
-                            <SwiperSlide key={idx}>
+                            <SwiperSlide key={idx} className="flex flex-col h-full">
                                 <div
-                                    key={idx}
-                                    className="grow bg-linear-to-r from-white/30 to-white/5 backdrop-blur-[21px] rounded-2xl shadow-lg p-5 flex flex-col max-w-[400px] text-left relative"
+                                    className="grow h-full mx-1 backdrop-blur-[21px] rounded-2xl shadow-lg p-5 flex flex-col max-w-[400px] text-left relative"
+                                    style={{ backgroundImage: 'radial-gradient(107.32% 141.42% at 0% 0%, #ffffff3b, #fff0)' }}
                                 >
                                     {plan.top_notch && (
                                         <p className="absolute -top-5 left-1/2 -translate-x-1/2 bg-[#f9a825] text-white font-bold py-2 px-2 sm:px-5 rounded-[8px]">
@@ -217,7 +208,6 @@ const PricingSection = () => {
                                     {plan.plan_platforms.length > 0 && (
                                         <div className="flex gap-2 items-center mb-2">
                                             <img src="/assets/icons/check.png" className="size-6" alt="check" />
-
                                             <span className="font-bold">Platforms:</span>
                                             {plan.plan_platforms.map((platform) => (
                                                 <img
@@ -234,10 +224,8 @@ const PricingSection = () => {
                                     <ul className="mb-2 text-sm">
                                         {plan.plan_description.map((feature, i) => (
                                             <li key={i} className="mb-1 border-b py-1 font-medium text-[16px] border-white/40 gap-2 flex items-center">
-                                                <img src="/assets/icons/check.png" className="size-6" alt="check" /> <div
-                                                    // className="text-gray-800 text-base"
-                                                    dangerouslySetInnerHTML={{ __html: feature }}
-                                                />
+                                                <img src="/assets/icons/check.png" className="size-6" alt="check" />
+                                                <div dangerouslySetInnerHTML={{ __html: feature }} />
                                             </li>
                                         ))}
                                     </ul>
@@ -261,7 +249,7 @@ const PricingSection = () => {
                                         </div>
                                     )}
 
-                                    {/* Image */}
+                                    {/* Image (for plan_package) */}
                                     {plan.plan_package && (
                                         <img
                                             src={plan.plan_package}
@@ -271,49 +259,41 @@ const PricingSection = () => {
                                     )}
 
                                     {/* Free text */}
-                                    {plan.plan_free && (
-                                        <div className="text-center font-bold mt-2">{plan.plan_free}</div>
-                                    )}
+                                    <div className="mt-auto flex flex-col ">
 
-                                    {/* Button */}
-                                    <button className="mt-4 w-full text-lg  hover:bg-[#f9a825] border-white border cursor-pointer py-3 rounded-[30px] font-bold">
-                                        {plan.button_text}
-                                    </button>
+                                        {plan.plan_free && (
+                                            // <div className=" mt-auto text-center font-bold">{plan.plan_free}</div>
+                                            <p className="inline-block my-2 bg-[url('https://teamofgenius.com/assets/images/Free.webp')] bg-cover bg-center bg-no-repeat text-white py-[10px] md:px-[40px] md:py-[10px] font-poppins md:font-semibold leading-[11.07px] px-0 sm:rounded-[20px] text-[10px] md:text-[1rem] font-sm md:leading-[16.07px] text-center mb-[30px] md:mb-0 w-full">
+                                                {plan.plan_free}
+                                            </p>
+                                        )}
+
+                                        {/* Button */}
+                                        <button className="mt-6 text-lg hover:bg-[#f9a825] border-white border cursor-pointer py-3 rounded-[30px] font-bold">
+                                            {plan.button_text}
+                                        </button>
+                                    </div>
                                 </div>
                             </SwiperSlide>
+
                         ))}
                     </Swiper>
                 </div>
-                <div className="flex justify-center gap-4 mt-0 md:mt-0 absolute right-[25%] md:right-[50%] translate-x-[-50%] bottom-8 md:bottom-[12rem]">
-                    <div ref={prevRef} className="cursor-pointer text-black size-8 bg-[#eab101] rounded-full flex justify-center items-center pricing-prev">
+                <div className="flex lg:hidden justify-center gap-4 mt-0 md:mt-0 ">
+                    <div id="my-swiper-button-prev" className="cursor-pointer text-black size-8 bg-[#eab101] rounded-full flex justify-center items-center pricing-prev">
                         <svg className="icon icon-tabler icons-tabler-outline icon-tabler-chevron-left" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                             <path d="M15 6l-6 6l6 6" />
                         </svg>
                     </div>
-                    <div ref={nextRef} className="cursor-pointer text-black size-8 bg-[#eab101] rounded-full flex justify-center items-center pricing-next">
+                    <div id="my-swiper-button-next" className="cursor-pointer text-black size-8 bg-[#eab101] rounded-full flex justify-center items-center pricing-next">
                         <ChevronRight />
                     </div>
                 </div>
             </div>
 
-            <style >{`
-        @keyframes marquee {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
-        }
-        .animate-marquee {
-          display: inline-block;
-          animation: marquee 30s linear infinite;
-        }
-      `}</style>
         </section>
     );
 };
 
 export default PricingSection;
-

@@ -1,8 +1,8 @@
-import  { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCards } from "swiper/modules";
 
-const Testimonials= () => {
+const Testimonials = () => {
   const [playingIndex, setPlayingIndex] = useState<number | null>(null);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
@@ -74,11 +74,11 @@ const Testimonials= () => {
   ];
 
   return (
-    <section className="happycustomers">
+    <section className="happycustomers mb-12">
       <div className="flex flex-wrap md:flex-nowrap w-full justify-between items-start pt-12">
         {/* Text Content */}
         <div className="text-content md:mt-24 space-y-4 px-0 mx-0 flex-1">
-          <h2 className="text-5xl md:ml-40 font-bold w-full max-w-[590px] leading-10">
+          <h2 className="text-5xl max-sm:text-center md:ml-40 font-bold w-full max-w-[590px] leading-10">
             What our happy <span className="text-[#f9a825]">customers</span> have to say?
           </h2>
           <div className="bg-[#EAB101] rounded-r-full hidden md:flex items-center justify-between px-4 md:px-14 py-1 wide-tag relative">
@@ -103,7 +103,7 @@ const Testimonials= () => {
         </div>
 
         {/* Swiper Cards */}
-        <div className="md:w-6/12 w-full mt-8 md:mt-0 flex justify-center">
+        <div className="md:w-6/12 w-full mt-8 md:mt-0 flex justify-center overflow-hidden">
           <Swiper
             effect={"cards"}
             grabCursor={true}
@@ -115,9 +115,9 @@ const Testimonials= () => {
                 <div className="relative p-1 rounded-[5px] bg-secondary">
                   <video
                     ref={(el) => {
-                      videoRefs.current[idx] = el; // assign to the ref array
+                      videoRefs.current[idx] = el; 
                     }}
-                    className="w-full rounded-[6px] h-[400px] object-cover"
+                    className="w-full rounded-[6px] h-[300px] sm:h-[400px] object-cover"
                     loop
                     poster={customer.poster}
                   >
@@ -151,7 +151,8 @@ const Testimonials= () => {
                       <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" className="text-6xl group-hover:opacity-100 opacity-50 transition-all duration-300" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm-16 328c0 8.8-7.2 16-16 16h-48c-8.8 0-16-7.2-16-16V176c0-8.8 7.2-16 16-16h48c8.8 0 16 7.2 16 16v160zm112 0c0 8.8-7.2 16-16 16h-48c-8.8 0-16-7.2-16-16V176c0-8.8 7.2-16 16-16h48c8.8 0 16 7.2 16 16v160z"></path></svg>
                     </button>
                   )}
-                  <div className="text-center mt-4">
+                  <div className="text-center mt-4 relative">
+                     <div className="absolute mx-auto inset-0 bg-white/60 w-48 blur-xl rounded-full"></div>
                     <div className="flex items-center justify-center gap-2">
                       <h3 className="m-0 font-exo">{customer.name} -</h3>
                       <img
@@ -168,6 +169,25 @@ const Testimonials= () => {
               </SwiperSlide>
             ))}
           </Swiper>
+        </div>
+        <div className="bg-[#EAB101] mt-6 rounded-r-full max-md:flex items-center w-full justify-between px-4 hidden wide-tag relative">
+          <div className="">
+            <svg
+              stroke="currentColor"
+              fill="currentColor"
+              strokeWidth="0"
+              viewBox="0 0 24 24"
+              className="h-10 text-[3rem] -rotate-180 text-[#0000003f]"
+              height="1em"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path fill="none" d="M0 0h24v24H0z"></path>
+              <path d="M15.5 5H11l5 7-5 7h4.5l5-7z"></path>
+              <path d="M8.5 5H4l5 7-5 7h4.5l5-7z"></path>
+            </svg>
+          </div>
+          <p className="m-0 text-[13px] text-black font-bold">Swipe on the cards to see all reviews</p>
         </div>
       </div>
     </section>

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-
+import {ReactLenis} from 'lenis/react'
 const HowItWorks = () => {
   const [activeStep, setActiveStep] = useState(1);
   const sectionRefs = useRef<Array<HTMLDivElement | null>>([])
@@ -61,8 +61,22 @@ const HowItWorks = () => {
     const el = sectionRefs.current[id - 1];
     if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
   };
+const [stylePosition, setStylePosition] = useState<React.CSSProperties>({ position: "sticky" });
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (activeStep <= 3) {
+        setStylePosition({ position: "sticky" });
+      } else {
+        setStylePosition({}); // resets to undefined, or you can specify a different style
+      }
+    }, 200); // Delay of 2000ms (2 seconds), adjust as needed
+
+    return () => clearTimeout(timer); // Clean up timer on component unmount
+  }, [activeStep]); 
   return (
+     <ReactLenis root>
+
     <section
       id="howitswork"
       className="relative px-4 py-16 max-w-5xl w-full mx-auto"
@@ -74,7 +88,7 @@ const HowItWorks = () => {
 
       {/* Sticky Navigation */}
       <div
-       style={{ position: activeStep > 3 ?  undefined: "sticky" }} 
+        style={stylePosition}
       className="stispocky top-4 z-20 backdrop-blur-md rounded-xl">
         <h1 className="font-extrabold text-center pt-6 pb-6 mx-auto text-[clamp(1.375rem,0.7475rem+2.5743vw,3rem)]">
           How It Works?
@@ -116,21 +130,24 @@ const HowItWorks = () => {
                 "rgba(255, 255, 255, 0.02) -5px -5px 250px 0px inset",
             }}
           >
-            <div className={`flex md:flex-nowrap flex-wrap h-full items-center justify-center relative w-full max-h-[400px] h-[40vh] md:h-[60vh]`}>
+            <div className={`flex md:flex-nowrap flex-wrap h-fudll items-center justify-center relative w-full max-h-[400px] h-[40vh] md:h-[60vh]`}>
               <div className="w-full md:w-6/12 px-4 md:px-8 py-5 md:py-2 flex items-center">
                 <p className="font-bold text-[#D3D3D3] text-[clamp(0.75rem,0.3156rem+1.7822vw,1.875rem)]">
                   {step.text}
                 </p>
               </div>
               <div className="w-10/12 md:w-6/12 flex items-end pb-10 md:pb-0 h-4/5 relative pr-4">
-                <video
-                  src={step.video}
-                  autoPlay
-                  className="w-full h-full object-contain rounded-xl md:rounded-none rounded-tl-xl rounded-bl-xl"
-                  style={
-                    { backgroundColor: step.id === 4 ? 'black' : "" }
-                  }
-                />
+               <video
+  src={step.video}
+  autoPlay
+  loop
+  muted
+  playsInline
+  className="w-full h-full object-contain rounded-xl md:rounded-none rounded-tl-xl rounded-bl-xl"
+  style={{
+    backgroundColor: step.id === 4 ? "black" : "",
+  }}
+/>
               </div>
             </div>
           </div>
@@ -138,6 +155,7 @@ const HowItWorks = () => {
 
       </div>
     </section>
+      </ReactLenis>
   );
 };
 

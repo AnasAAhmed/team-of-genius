@@ -124,7 +124,7 @@ const Footer = () => {
                   <Instagram className="w-[30px] h-[30px] cursor-pointer object-none max-[480px]:w-[25px] max-[480px]:h-[25px] max-[480px]:object-contain" />
                 </a>
                 <a href="https://t.me/teamofgenius" title="Telegram" target="_blank" rel="noopener noreferrer">
-                  <Send className="w-[30px] h-[30px] cursor-pointer object-none max-[480px]:w-[25px] max-[480px]:h-[25px] max-[480px]:object-contain" />
+                  <img src="/assets/icons/telegram.webp"  className="w-[30px] h-[30px] cursor-pointer object-none max-[480px]:w-[25px] max-[480px]:h-[25px] max-[480px]:object-contain" alt="telegram" />
                 </a>
               </div>
               <div className="mt-3 text-center">

@@ -1,35 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import {ReactLenis} from 'lenis/react'
+import { steps } from "@/lib/constants";
 const HowItWorks = () => {
   const [activeStep, setActiveStep] = useState(1);
   const sectionRefs = useRef<Array<HTMLDivElement | null>>([])
-  const steps = [
-    {
-      id: 1,
-      text: "First step is to link your social media accounts with one easy click.",
-      video: "https://teamofgenius.com/assets/images/how-its-work/1-1.mp4",
-    },
-    {
-      id: 2,
-      text: "Choose category of your 'Theme page' out of 250+ niches.",
-      video: "https://teamofgenius.com/assets/images/how-its-work/2-2.mp4",
-    },
-    {
-      id: 3,
-      text: "Watch content being created-scheduled-published by our Genius AI Agent to your social media pages daily.",
-      video: "https://teamofgenius.com/assets/images/how-its-work/3-3.mp4",
-    },
-    {
-      id: 4,
-      text: (
-        <>
-          Experience the follower growth and how it turns into{" "}
-          <span className="text-[#34941c]">$</span>'s.
-        </>
-      ),
-      video: "https://teamofgenius.com/assets/images/how-its-work/4-4.mp4",
-    },
-  ];
+  
 
  useEffect(() => {
   const observer = new IntersectionObserver(
@@ -75,7 +49,6 @@ const [stylePosition, setStylePosition] = useState<React.CSSProperties>({ positi
     return () => clearTimeout(timer); // Clean up timer on component unmount
   }, [activeStep]); 
   return (
-     <ReactLenis root>
 
     <section
       id="howitswork"
@@ -155,7 +128,6 @@ const [stylePosition, setStylePosition] = useState<React.CSSProperties>({ positi
 
       </div>
     </section>
-      </ReactLenis>
   );
 };
 

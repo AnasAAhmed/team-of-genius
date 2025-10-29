@@ -82,7 +82,7 @@ export const faqsColumn = [
     {
         id: 17,
         que: "How do I switch my Instagram account from personal to professional?",
-        answer:  `<a style="color: #EAB308;" classname="font-bold text-[#EAB308] mx-1" target="_blank" href="/switch-to-professional-account">
+        answer: `<a style="color: #EAB308;" classname="font-bold text-[#EAB308] mx-1" target="_blank" href="/switch-to-professional-account">
               Click to know how
             </a>`
     },
@@ -93,4 +93,168 @@ export const faqsColumn = [
               Click to know how
             </a>`
     },
-  ]
+];
+
+export const steps = [
+    {
+        id: 1,
+        text: "First step is to link your social media accounts with one easy click.",
+        video: "https://teamofgenius.com/assets/images/how-its-work/1-1.mp4",
+    },
+    {
+        id: 2,
+        text: "Choose category of your 'Theme page' out of 250+ niches.",
+        video: "https://teamofgenius.com/assets/images/how-its-work/2-2.mp4",
+    },
+    {
+        id: 3,
+        text: "Watch content being created-scheduled-published by our Genius AI Agent to your social media pages daily.",
+        video: "https://teamofgenius.com/assets/images/how-its-work/3-3.mp4",
+    },
+    {
+        id: 4,
+        text: (
+            <>
+                Experience the follower growth and how it turns into{" "}
+                <span className="text-[#34941c]">$</span>'s.
+            </>
+        ),
+        video: "https://teamofgenius.com/assets/images/how-its-work/4-4.mp4",
+    },
+];
+
+export const socialProfiles = [
+    { name: "Clips", followers: "14.5M", src: "/assets/images/Clips 14.5M.webp" },
+    { name: "Earthpix", followers: "23.7M", src: "/assets/images/earthpix 23.7M.webp" },
+    { name: "Fuckboyproblem", followers: "15.8M", src: "/assets/images/fuckboyproblem.s 15.8M.webp" },
+    { name: "Historyphotographed", followers: "8.7M", src: "/assets/images/historyphotographed 8.7M.webp" },
+    { name: "Wasted", followers: "16.1M", src: "/assets/images/wasted 16.1M.webp" },
+    { name: "Barstoolsports", followers: "47.4M", src: "/assets/images/barstoolsprorts 47.4M.webp" },
+    { name: "Championsleague", followers: "50.7M", src: "/assets/images/Championsleague 50.7M.webp" },
+    { name: "Foodies", followers: "21.7M", src: "/assets/images/foodies 21.7M.webp" },
+    { name: "Memes", followers: "12.1M", src: "/assets/images/memes 12.1M.webp" },
+    { name: "Chills", followers: "6.2M", src: "/assets/images/Chills 6.2M.webp" },
+    { name: "Failarmy", followers: "17.3M", src: "/assets/images/failarmy 17.3M.webp" },
+    { name: "Peopleareawesome", followers: "5.9M", src: "/assets/images/peopleareawesome 5.9M.webp" },
+    { name: "Therichest", followers: "14.8M", src: "/assets/images/therichest 14.8M.webp" },
+];
+
+export const brandLogos = [
+    "/assets/images/logitech.webp",
+    "/assets/images/ibm.webp",
+    "/assets/images/samsung.webp",
+    "/assets/images/meta.webp",
+    "/assets/images/uber.webp",
+    "/assets/images/ingenico.webp",
+    "/assets/images/accenture.webp",
+    "/assets/images/addidas.webp",
+
+    "/assets/images/logitech.webp",
+    "/assets/images/ibm.webp",
+    "/assets/images/samsung.webp",
+];
+
+export const plans = [
+    {
+        "id": 2,
+        "plan_name": "Premium",
+        "plan_price": "29.00",
+        "top_notch": "~ $1 per day",
+        "plan_sequence": 1,
+        "plan_duration": "month",
+        "plan_description": [
+            "Auto Content Generation Through TOG AI",
+            "<span> <b>30</b> Reels/Shorts/Posts Based On Your Category Every Month</span>",
+            "Full Analytics (Up To 6 Months Of Data)",
+            "Access To All Future Updates For FREE",
+            "Guaranteed Results (10,000 Followers)",
+            "Dedicated Account Manager",
+            "Money Back Guarantee"
+        ],
+        "plan_bonuses": [
+            {
+                "text": "Premium ChatGPT V5.0 + 5000 Prompts Bundle",
+                "image": "/assets/images/benefit-icon.png"
+            }
+        ],
+        "plan_package": "/assets/images/aibook.png",
+        "plan_free": "FREE (worth $799)",
+        "trial_period_days": 3,
+        "button_text": "Start 3-Days Free trial"
+    },
+    {
+        "id": 3,
+        "plan_name": "Premium Plus +",
+        "plan_price": "49.00",
+        "top_notch": "~ $1.50 per day",
+        "plan_sequence": 2,
+        "plan_duration": "month",
+        "plan_description": [
+            "Auto Content Generation Through TOG AI",
+            "<span> <b>60</b> Reels/Shorts/Posts Based On Your Category Every Month </span>",
+            "Full Analytics (Up To 1 Year Of Data)",
+            "Access To All Future Updates For FREE",
+            "Guaranteed Results (30,000 Followers)",
+            "Priority Customer Support",
+            "Dedicated Account Manager"
+        ],
+        "plan_bonuses": [
+            {
+                "text": "Premium ChatGPT V5.0 + 5000 Prompts Bundle",
+                "image": "/assets/images/benefit-icon.png"
+            }
+        ],
+        "plan_package": "/assets/images/aibook.png",
+        "plan_free": "FREE (worth $799)",
+        "trial_period_days": 0,
+        "button_text": "Buy Now"
+    },
+    {
+        "id": 5,
+        "plan_name": "Lifetime",
+        "plan_price": "999.00",
+        "top_notch": "",
+        "plan_sequence": 3,
+        "plan_duration": "lifetime",
+        "plan_description": [
+            "Auto Content Generation Through TOG AI",
+            "<span><b>90</b> Reels/Shorts/Posts Based On Your Category Every Month</span>",
+            "Full Analytics (Up To 1 Year Of Data)",
+            "Access To All Future Updates For FREE",
+            "Guaranteed Results (1M+ Followers)",
+            "Priority Customer Support",
+            "Dedicated Account Manager",
+            "Brand Deals Platform Access"
+        ],
+        "plan_bonuses": [
+            {
+                "text": "Premium ChatGPT V5.0 + 5000 Prompts Bundle",
+                "image": "/assets/images/benefit-icon.png"
+            },
+            {
+                "text": "Become A Pro Trader In 5 Days + Start Earning From Today",
+                "image": "/assets/images/pro-trader.png"
+            },
+            {
+                "text": "DropShipping Business Setup Course",
+                "image": "/assets/images/aws.png"
+            }
+        ],
+        "plan_package": "/assets/images/packages.png",
+        "plan_free": "FREE (worth $6843)",
+        "trial_period_days": 0,
+        "button_text": "Buy Lifetime"
+    }
+];
+
+export const reviewImages = [
+    '/assets/images/review_1.webp',
+    '/assets/images/review_2.webp',
+    '/assets/images/review_3.webp',
+    '/assets/images/review_4.webp',
+    '/assets/images/review_5.webp',
+    '/assets/images/review_6.webp',
+    '/assets/images/review_7.webp',
+    '/assets/images/review_8.webp',
+    '/assets/images/review_9.webp',
+]

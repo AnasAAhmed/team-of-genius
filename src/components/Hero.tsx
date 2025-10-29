@@ -106,7 +106,8 @@ const Hero = () => {
                 key={icon}
                 className="size-8"
                 loading="lazy"
-                src={`https://teamofgenius.com/assets/images/${icon}-icon.webp`}
+                src={icon==='x' ? `/assets/icons/${icon}.svg`
+                  : `/assets/icons/${icon}-icon.webp`}
                 alt={icon}
               />
             ))}

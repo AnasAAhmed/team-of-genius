@@ -25,7 +25,7 @@ const EarnWhileYouRelax = () => {
           <div className="max-w-[1200px] mx-auto flex flex-col lg:flex-row items-center justify-between gap-5 text-center lg:text-left lg:gap-[30px]">
             {/* Performance Card */}
             <div className="performance-card">
-              <h3 className="inline-block  leading-[150%] bg-[url('https://teamofgenius.com/assets/images/Free.webp')] bg-cover bg-center bg-no-repeat text-white py-2.5 md:px-10 md:py-2.5 font-poppins md:font-semibold leading-[11.07px] px-0 sm:rounded-[20px] text-2.5 md:text-[1rem] font-sm md:leading-[16.07px] text-center mb-[30px] md:mb-0 w-full">
+              <h3 className="inline-block  leading-[150%] bg-[url('/assets/images/Free.webp')] bg-cover bg-center bg-no-repeat text-white py-2.5 md:px-10 md:py-2.5 font-poppins md:font-semibold leading-[11.07px] px-0 sm:rounded-[20px] text-2.5 md:text-[1rem] font-sm md:leading-[16.07px] text-center mb-[30px] md:mb-0 w-full">
                 Our top performer gained millions of followers in few months
               </h3>
               <img
@@ -44,7 +44,7 @@ const EarnWhileYouRelax = () => {
               <div
                 className="rounded-[20px] pt-[5px] px-5 pb-0 md:pb-5 text-center text-black shadow-[0_8px_16px_rgba(0,0,0,0.2)] bg-linear-to-b from-white to-[#f9a825]"
                 style={{
-                  background: "url('https://teamofgenius.com/assets/images/calculator-bg1.webp') center center / cover no-repeat",
+                  background: "url('/assets/images/calculator-bg1.webp') center center / cover no-repeat",
                 }}
               >
                 <h3 className="text-black font-poppins text-[18px] font-bold text-center [text-underline-position:from-font] [text-decoration-skip-ink:none]">

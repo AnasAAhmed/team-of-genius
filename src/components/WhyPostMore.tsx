@@ -1,19 +1,8 @@
+import { reviewImages } from "@/lib/constants";
 import { ChevronRight } from "lucide-react";
 import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-
-const images = [
-    '/assets/images/review_1.webp',
-    '/assets/images/review_2.webp',
-    '/assets/images/review_3.webp',
-    '/assets/images/review_4.webp',
-    '/assets/images/review_5.webp',
-    '/assets/images/review_6.webp',
-    '/assets/images/review_7.webp',
-    '/assets/images/review_8.webp',
-    '/assets/images/review_9.webp',
-]
 
 const WhyPostMoreSection = () => {
     return (
@@ -193,7 +182,7 @@ const WhyPostMoreSection = () => {
                                         }}
                                         className="absolute -top-[46px] left-[62px] w-[228px] h-[456px] rounded-3xl max-[480px]:rounded-2xl overflow-hidden bg-white max-[480px]:w-[124px] max-[480px]:h-[245px] max-[480px]:-top-[27px] max-[480px]:left-[9px]"
                                     >
-                                        {images.map((image, idx) => (
+                                        {reviewImages.map((image, idx) => (
                                             <SwiperSlide key={idx}>
                                                 <img src={image} alt="review image" className="w-full h-full object-cover" />
                                             </SwiperSlide>

@@ -1,102 +1,14 @@
+import { plans } from "@/lib/constants";
 import { ChevronRight } from "lucide-react";
 import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-const plans = [
-    {
-        "id": 2,
-        "plan_name": "Premium",
-        "plan_price": "29.00",
-        "top_notch": "~ $1 per day",
-        "plan_sequence": 1,
-        "plan_duration": "month",
-        "plan_platforms": ["instagram", 'facebook'],
-        "plan_description": [
-            "Auto Content Generation Through TOG AI",
-            "<span> <b>30</b> Reels/Shorts/Posts Based On Your Category Every Month</span>",
-            "Full Analytics (Up To 6 Months Of Data)",
-            "Access To All Future Updates For FREE",
-            "Guaranteed Results (10,000 Followers)",
-            "Dedicated Account Manager",
-            "Money Back Guarantee"
-        ],
-        "plan_bonuses": [
-            {
-                "text": "Premium ChatGPT V5.0 + 5000 Prompts Bundle",
-                "image": "/assets/images/benefit-icon.png"
-            }
-        ],
-        "plan_package": "/assets/images/aibook.png",
-        "plan_free": "FREE (worth $799)",
-        "trial_period_days": 3,
-        "button_text": "Start 3-Days Free trial"
-    },
-    {
-        "id": 3,
-        "plan_name": "Premium Plus +",
-        "plan_price": "49.00",
-        "top_notch": "~ $1.50 per day",
-        "plan_sequence": 2,
-        "plan_duration": "month",
-        "plan_platforms": ["instagram", 'facebook', "youtube"],
-        "plan_description": [
-            "Auto Content Generation Through TOG AI",
-            "<span> <b>60</b> Reels/Shorts/Posts Based On Your Category Every Month </span>",
-            "Full Analytics (Up To 1 Year Of Data)",
-            "Access To All Future Updates For FREE",
-            "Guaranteed Results (30,000 Followers)",
-            "Priority Customer Support",
-            "Dedicated Account Manager"
-        ],
-        "plan_bonuses": [
-            {
-                "text": "Premium ChatGPT V5.0 + 5000 Prompts Bundle",
-                "image": "/assets/images/benefit-icon.png"
-            }
-        ],
-        "plan_package": "/assets/images/aibook.png",
-        "plan_free": "FREE (worth $799)",
-        "trial_period_days": 0,
-        "button_text": "Buy Now"
-    },
-    {
-        "id": 5,
-        "plan_name": "Lifetime",
-        "plan_price": "999.00",
-        "top_notch": "",
-        "plan_sequence": 3,
-        "plan_duration": "lifetime",
-        "plan_platforms": ["instagram", 'facebook', "youtube", "tiktok", "x"],
-        "plan_description": [
-            "Auto Content Generation Through TOG AI",
-            "<span><b>90</b> Reels/Shorts/Posts Based On Your Category Every Month</span>",
-            "Full Analytics (Up To 1 Year Of Data)",
-            "Access To All Future Updates For FREE",
-            "Guaranteed Results (1M+ Followers)",
-            "Priority Customer Support",
-            "Dedicated Account Manager",
-            "Brand Deals Platform Access"
-        ],
-        "plan_bonuses": [
-            {
-                "text": "Premium ChatGPT V5.0 + 5000 Prompts Bundle",
-                "image": "/assets/images/benefit-icon.png"
-            },
-            {
-                "text": "Become A Pro Trader In 5 Days + Start Earning From Today",
-                "image": "/assets/images/pro-trader.png"
-            },
-            {
-                "text": "DropShipping Business Setup Course",
-                "image": "/assets/images/aws.png"
-            }
-        ],
-        "plan_package": "/assets/images/packages.png",
-        "plan_free": "FREE (worth $6843)",
-        "trial_period_days": 0,
-        "button_text": "Buy Lifetime"
-    }
-]
 
+const platforms = [
+    ["instagram", 'facebook'],
+    ["instagram", 'facebook', "youtube"],
+    ["instagram", 'facebook', "youtube", "tiktok", "x"],
+
+]
 
 const PricingSection = () => {
 
@@ -188,7 +100,7 @@ const PricingSection = () => {
                                     style={{ backgroundImage: 'radial-gradient(107.32% 141.42% at 0% 0%, #ffffff3b, #fff0)' }}
                                 >
                                     {plan.top_notch && (
-                                        <p className="absolute -top-5 left-1/2 -translate-x-1/2 bg-[#f9a825] text-white font-bold py-2 px-2 sm:px-5 rounded-[8px]">
+                                        <p className="absolute -top-5 left-1/2 -translate-x-1/2 bg-[#f9a825] text-white font-bold py-2 px-2 sm:px-5 rounded-xl">
                                             {plan.top_notch}
                                         </p>
                                     )}
@@ -205,14 +117,15 @@ const PricingSection = () => {
                                     </p>
 
                                     {/* Platforms */}
-                                    {plan.plan_platforms.length > 0 && (
+                                    {platforms.length > 0 && (
                                         <div className="flex gap-2 items-center mb-2">
                                             <img src="/assets/icons/check.png" className="size-6" alt="check" />
                                             <span className="font-bold">Platforms:</span>
-                                            {plan.plan_platforms.map((platform) => (
+                                            {platforms[idx].map((platform) => (
                                                 <img
                                                     key={platform}
-                                                    src={`https://teamofgenius.com/assets/images/${platform}-icon.webp`}
+                                                    src={platform==='x' ? `/assets/icons/${platform}.svg`
+                                                        : `/assets/icons/${platform}-icon.webp`}
                                                     alt={platform}
                                                     className="w-5 h-5 rounded-full object-contain"
                                                 />
@@ -263,7 +176,7 @@ const PricingSection = () => {
 
                                         {plan.plan_free && (
                                             // <div className=" mt-auto text-center font-bold">{plan.plan_free}</div>
-                                            <p className="inline-block my-2 bg-[url('https://teamofgenius.com/assets/images/Free.webp')] bg-cover bg-center bg-no-repeat text-white py-[10px] md:px-[40px] md:py-[10px] font-poppins md:font-semibold leading-[11.07px] px-0 sm:rounded-[20px] text-[10px] md:text-[1rem] font-sm md:leading-[16.07px] text-center mb-[30px] md:mb-0 w-full">
+                                            <p className="inline-block my-2 bg-[url('/assets/images/Free.webp')] bg-cover bg-center bg-no-repeat text-white py-2.5 md:px-10 font-poppins md:font-semibold leading-[11.07px] px-0 sm:rounded-[20px] text-[10px] md:text-[1rem] font-sm md:leading-[16.07px] text-center mb-[30px] md:mb-0 w-full">
                                                 {plan.plan_free}
                                             </p>
                                         )}
